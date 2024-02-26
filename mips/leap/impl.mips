@@ -10,7 +10,10 @@
 
 is_leap_year:
     rem $t0, $a0, 100
-    beq $t0, 0
+    beq $t0, 0, check_if_hundreds
+    rem $t0, $a0, 4
+    beq $t0, 0, return_true
+    b return_false
 
 check_if_hundreds:
     rem $t0, $a0, 400
@@ -18,10 +21,10 @@ check_if_hundreds:
     b return_false
 
 return_false:
-    lb $v0, 0
+    li $v0, 0
     jr $ra
 
 return_true:
-    lb $v0, 1
+    li $v0, 1
     jr $ra
 
